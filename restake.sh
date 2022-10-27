@@ -20,6 +20,10 @@ for (( ;; )); do
         echo -e "BALANCE: ${GREEN}${BAL}${NC} $TIKER\n"
         echo -e "Stake ALL\n"
         echo -e "${PASWD}\n${PASWD}\n" | $NODE_NAME tx staking delegate ${VALIDATOR} ${BAL}$TIKER  --chain-id $CHAIN_ID --from ${ACC_NAME} -y 
-        exit
+        for (( timer=${DELAY}; timer>0; timer-- ))
+        do
+                printf "* sleep for ${RED}%02d${NC} sec\r" $timer
+                sleep 1
+        done
 done
 
